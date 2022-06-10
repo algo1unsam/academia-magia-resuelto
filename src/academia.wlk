@@ -176,9 +176,12 @@ class Academia {
 	}
 
 	method guardar(cosa) {
-		if (self.puedeGuardar(cosa)) {
-			self.dondePuedeGuardar(cosa).asList().first().guardar(cosa)
-		} else {
+		self.validarSePuedeGuardar(cosa)
+		self.dondePuedeGuardar(cosa).asList().first().guardar(cosa)
+	}
+
+	method validarSePuedeGuardar(cosa) {
+		if (not self.puedeGuardar(cosa)) {
 			self.error("No se puede guardar")
 		}
 	}
